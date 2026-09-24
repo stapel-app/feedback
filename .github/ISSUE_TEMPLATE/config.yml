@@ -1,0 +1,17 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/stapel-app/feedback/blob/main/SECURITY.md
+    about: Never in a public issue. Mail hallo@square-management.nl — SECURITY.md says what to include.
+
+  - name: Fix a missing, moved or closed store
+    url: https://www.openstreetmap.org/edit
+    about: Stapel rebuilds its store list from OpenStreetMap. Fixing it there fixes it for everyone, permanently, and it arrives back on the next rebuild.
+
+  - name: StreetComplete — fix it from the shop doorway
+    url: https://streetcomplete.app/
+    about: The easiest way to edit OpenStreetMap. It asks you questions while you stand in front of the shop.
+
+  - name: The shop data Stapel ships
+    url: https://github.com/stapel-app/store-data
+    about: The signed country snapshots the app downloads, and the brand catalogue, both public.

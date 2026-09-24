@@ -1,0 +1,92 @@
+name: Missing or closed store
+description: A branch of a chain Stapel already knows is missing, moved, or closed
+labels: ["store-data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## This one almost certainly belongs in OpenStreetMap, not here
+
+        Stapel's store database is rebuilt from OpenStreetMap. A store added here is overwritten on
+        the next rebuild. A store added to OpenStreetMap arrives back through that rebuild, and it
+        fixes every map and every app that uses the data, not only this one.
+
+        **So please fix it there. It takes about a minute and it is the only route that lasts.**
+
+        | | |
+        |---|---|
+        | Standing in front of the shop, on your phone | [StreetComplete](https://streetcomplete.app/) — the easiest way there is, it asks you questions |
+        | At a laptop | [The OpenStreetMap editor](https://www.openstreetmap.org/edit) — free account, no approval needed |
+        | A shop that has **closed** | Same route. Nothing else detects a closure, which is why this matters more than the missing ones |
+
+        Stapel picks the change up on its next monthly rebuild.
+
+        **In the meantime, the app has an answer that works today:** open the card, and where no
+        store of that chain is nearby it offers to pin the shop you are standing in. That pin is
+        local, it arms arrival detection immediately, and it is never overwritten by a sync.
+
+        ---
+
+        ### So why is this form here at all
+
+        Two reasons, and neither is "send me the store".
+
+        1. **The chain might not be in the catalogue at all.** If Stapel has never heard of the
+           brand, OpenStreetMap is the wrong destination and the missing-brand form is the right
+           one.
+        2. **The data might be wrong in a way OpenStreetMap is right about** — the store is mapped,
+           correctly, and Stapel still does not see it. That is a bug in the pipeline
+           (`tools/stores/`) and it is mine to fix.
+
+        Fill this in for those two. Not to report a single shop you have not yet added upstream.
+
+  - type: checkboxes
+    id: osm-first
+    attributes:
+      label: OpenStreetMap
+      options:
+        - label: I understand a missing branch is fixed in OpenStreetMap, not here, and I have either fixed it there or explained below why that is not the right route.
+          required: true
+
+  - type: input
+    id: chain
+    attributes:
+      label: Which chain
+      placeholder: Etos
+    validations:
+      required: true
+
+  - type: dropdown
+    id: case
+    attributes:
+      label: What is actually wrong
+      options:
+        - The chain is not in Stapel at all (stop here and use the missing-brand form instead)
+        - The store is correctly mapped in OpenStreetMap but Stapel does not show it
+        - The store was closed in OpenStreetMap but Stapel still shows it
+        - Stapel shows the wrong sub-format (an AH to go listed as a full supermarket, say)
+        - Something else about the store data
+    validations:
+      required: true
+
+  - type: input
+    id: osm-link
+    attributes:
+      label: Link to the OpenStreetMap object
+      description: >
+        Open the store on openstreetmap.org and copy the address bar. It looks like
+        openstreetmap.org/node/123456789. This is what lets me check the pipeline against the same
+        object you looked at, without you sending me a coordinate.
+      placeholder: https://www.openstreetmap.org/node/123456789
+    validations:
+      required: false
+
+  - type: textarea
+    id: detail
+    attributes:
+      label: Anything else
+      description: >
+        Please do not paste a coordinate you personally stood at. The OpenStreetMap link above
+        carries everything I need and it is already public data about a shop rather than about you.
+    validations:
+      required: false

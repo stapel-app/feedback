@@ -1,0 +1,108 @@
+name: Bug report
+description: Something in the app does not work
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Security bugs do not go here. Issues are public, so mail
+        `hallo@square-management.nl` instead — see [SECURITY.md](https://github.com/stapel-app/feedback/blob/main/SECURITY.md).
+
+        A missing or closed shop is not a bug. It goes to OpenStreetMap — use the
+        "Missing or closed store" form.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you expected, and what you got instead.
+      placeholder: I opened my Etos card and the barcode rendered upside down.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Enough that I can get there myself. Screenshots help, unless they show a barcode you care about.
+      placeholder: |
+        1. Open the card list
+        2. Tap the Etos card
+        3. ...
+    validations:
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: Stapel version
+      description: Settings, then About. Say "built from source" plus the commit if you built it yourself.
+      placeholder: 0.1.0 (build 14)
+    validations:
+      required: true
+
+  - type: input
+    id: android-version
+    attributes:
+      label: Android version
+      description: Settings, About phone, Android version. Stapel needs 8 or newer.
+      placeholder: Android 15
+    validations:
+      required: true
+
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      description: Make and model. Manufacturer skins change how widgets, tiles and background location behave, so this genuinely matters.
+      placeholder: Google Pixel 8a / Samsung Galaxy S23
+    validations:
+      required: true
+
+  - type: dropdown
+    id: arrival-detection
+    attributes:
+      label: Was arrival detection on?
+      description: Settings, then Arrival detection. It is off by default. It changes what the app does in the background, so a report without this is often unreproducible.
+      options:
+        - "No, it is off"
+        - "Yes, it is on"
+        - "I do not know"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part of the app?
+      options:
+        - Card list or card detail
+        - Barcode rendering or scanning at the till
+        - Adding a card (camera, gallery, batch, pkpass)
+        - Home screen widget
+        - Quick Settings tile or launcher shortcut
+        - Arrival detection or pinned stores
+        - Store list or store finder
+        - Backup, export or import
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Crash log
+      description: If it crashed, paste the stack trace. It is formatted as code automatically.
+      render: text
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: hygiene
+    attributes:
+      label: Before you post
+      options:
+        - label: I have removed any real barcode numbers, card numbers and addresses from what I pasted above.
+          required: true
+        - label: I searched the existing issues.
+          required: false

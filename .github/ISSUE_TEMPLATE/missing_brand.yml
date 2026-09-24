@@ -1,0 +1,114 @@
+name: Missing brand
+description: A chain Stapel has never heard of, which should be in the catalogue
+labels: ["catalogue"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **This one is ours.** There is no upstream for the brand catalogue — no OpenStreetMap
+        equivalent, nowhere else to send it. The catalogue is the actual product, so a good brand
+        report is the single most useful thing you can send.
+
+        A brand qualifies if it is a **chain with more than one location** and it issues a loyalty
+        card, a gift voucher or a membership. One independent gym, bakery or hairdresser is not a
+        chain — pin it in the app instead. That pin works fully offline, arms arrival detection,
+        and needs nobody's approval. If the shop later becomes a chain, the pin is superseded
+        rather than lost.
+
+        The catalogue carries Dutch chains plus chains from Belgium, Germany, France,
+        Spain, Italy, Portugal, the United Kingdom and the United States.
+
+  - type: input
+    id: name
+    attributes:
+      label: Brand name
+      description: Exactly as it is written on the shopfront and on the card.
+      placeholder: Sportschool Fit&Fun
+    validations:
+      required: true
+
+  - type: input
+    id: website
+    attributes:
+      label: Website
+      placeholder: https://example.nl
+    validations:
+      required: false
+
+  - type: dropdown
+    id: card-kind
+    attributes:
+      label: What kind of card is it
+      options:
+        - Loyalty card (klantenkaart, points, stamps)
+        - Gift voucher (cadeaubon)
+        - Membership or paid subscription (a renewal date, cancellable)
+        - More than one of these
+    validations:
+      required: true
+
+  - type: dropdown
+    id: symbology
+    attributes:
+      label: What is printed on the card
+      description: >
+        The barcode type, if you can tell. This is the field that decides whether the cashier's
+        scanner reads it first time, so a guess plus a photo beats leaving it blank.
+      options:
+        - EAN-13 (13 digits, a supermarket-style barcode)
+        - Code 128 (a long thin barcode, mixed letters and digits)
+        - QR code (a square)
+        - Aztec or Data Matrix (a square, but not a QR)
+        - A number to type in, no barcode at all
+        - I do not know
+    validations:
+      required: true
+
+  - type: input
+    id: colour
+    attributes:
+      label: Brand colour
+      description: >
+        The hex code if you know it, a plain description otherwise. Stapel renders a colour and a
+        Material Symbol rather than a logo, so this is what the card will look like.
+      placeholder: "#00A0E2, or just: dark green"
+    validations:
+      required: false
+
+  - type: dropdown
+    id: sector
+    attributes:
+      label: Sector
+      description: This picks the icon.
+      options:
+        - Supermarket or food
+        - Drugstore, pharmacy or beauty
+        - Clothing or fashion
+        - Home, furniture or DIY
+        - Electronics or media
+        - Restaurant, cafe or takeaway
+        - Fuel, transport or parking
+        - Sport, gym or leisure
+        - Culture, cinema or attractions
+        - Something else
+    validations:
+      required: true
+
+  - type: input
+    id: locations
+    attributes:
+      label: Roughly how many locations
+      description: An estimate is fine. It tells me whether the store database will find it.
+      placeholder: "about 40 in the Netherlands"
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: hygiene
+    attributes:
+      label: Before you post
+      options:
+        - label: If I attach a photo of a card, I have covered the barcode and the card number. This issue is public.
+          required: true
+        - label: I understand what I post here may be published under ODbL as part of the catalogue.
+          required: true
